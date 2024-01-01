@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block base %}
+    <h1>Hello</h1>
+    Buy Page
+    <form method="post" action="{% url 'api_buy' %}">
+        {% csrf_token %}
+        <label for="product_id">Product id</label>
+        <input name="product_id" type="text" required>
+        <br/>
+        <label for="quantity">Quantity</label>
+        <input name="quantity" type="text" required>
+        <button type="submit">提交</button>
+        {{ message }}
+    </form>
+{% endblock %}

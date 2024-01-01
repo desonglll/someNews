@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block base %}
+    <h1>This is home page</h1>
+    <ul>
+        <h2>Get All News</h2>
+        <li><a href="{% url "api_get_all_news" %}">api get all news</a></li>
+        <h2>Get By Nid</h2>
+        <li>
+            <form method="GET" action="{% url "api_get_by_nid" %}">
+                {% csrf_token %}
+                <input name="nid" required>
+                <button type="submit">获取对应nid的json数据</button>
+            </form>
+        </li>
+        <h2>Get Nav Data</h2>
+        <li><a href="{% url "api_nav_app" %}">api nav app</a></li>
+        <h2>Login Test</h2>
+        <li>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for="username">用户名:</label>
+                <input type="text" name="username" required>
+                <br>
+                <label for="password">密码:</label>
+                <input type="password" name="password" required>
+                <br>
+                <input type="submit" value="登录">
+            </form>
+        </li>
+        <li>
+            <h2>Purchase Test</h2>
+            <form method="post" action="{% url 'api_buy' %}">
+                {% csrf_token %}
+                <label for="product_id">Product id</label>
+                <input name="product_id" type="text" required>
+                <br/>
+                <label for="quantity">Quantity</label>
+                <input name="quantity" type="text" required>
+                <br/>
+                <button type="submit">提交</button>
+                {{ message }}
+            </form>
+        </li>
+    </ul>
+{% endblock %}
