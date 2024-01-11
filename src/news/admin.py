@@ -2,9 +2,6 @@ from django.contrib import admin
 from .models import News
 from django.contrib.admin.sites import AdminSite
 
-News._meta.verbose_name = "news"
-News._meta.verbose_name_plural = "news"
-
 
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', "release_date")  # 在列表中显示的字段

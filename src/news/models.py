@@ -65,3 +65,7 @@ class News(models.Model):
             'example'
         """
         return self.title
+
+
+News._meta.verbose_name = "news"
+News._meta.verbose_name_plural = "news"
